@@ -1,0 +1,53 @@
+.courseDescription {
+  width: 60%;
+}
+.courseImg {
+  width: 40%;
+}
+.courseImg img {
+  width: 100%;
+}
+.classLink {
+  text-decoration: none;
+  color: #343434;
+  border: 1px solid #343434;
+}
+.classLink:hover {
+  color: #343434;
+  background-color: #e6b31e;
+  border: 1px solid #e6b31e;
+}
+.lectureVideo {
+  width: 70%;
+}
+.lectureVideo video {
+  width: 100%;
+}
+.allTopics {
+  width: 25%;
+  background-color: #e6b31e;
+  height: fit-content;
+}
+.allTopics .topicBtn {
+  /* background-color: #cacaca; */
+  border: 1px solid #343434;
+  cursor: pointer;
+}
+.activeTopic {
+  color: #e6b31e;
+  background-color: #343434;
+}
+@media screen and (max-width: 768px) {
+  .courseDescription {
+    width: 100%;
+  }
+  .courseImg {
+    width: 100%;
+  }
+  .lectureVideo {
+    width: 100%;
+  }
+  .allTopics {
+    width: 100%;
+  }
+}

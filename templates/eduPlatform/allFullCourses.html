@@ -1,0 +1,85 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/allFullCourse.css' %}">
+
+{% endblock %}
+{% block body %}
+<section class="container my-5">
+    <h1>All Package Courses</h1>
+    <hr class="headingUnderline">
+    <div class="d-flex flex-wrap justify-content-center">
+        {% for course in courses %}
+        <div class="card m-2">
+            <a href="{% url 'fullcourseDetails' course.id course.title %}" class="imgCourses mx-auto">
+                <img src="/media/{{course.thumbnail}}" class="card-img-top" alt="{{course.title}}_image">
+
+                <div class="card-body pt-0">
+                    <h5 class="card-title mt-3 mb-0">{{course.title|slice:":50"}}</h5>
+                    <small class="m-0">Duration Of course: {{course.get_duration}} hrs</small>
+                    <p class="card-text mb-1">{{course.description|slice:":125"}}...</p>
+                    <p class="m-0"><strong>Courses Covered</strong></p>
+                    <ul class="d-flex flex-wrap p-0 mb-3">
+                        {% for topic in course.all_topics %}
+                        <li class="mx-3">{{topic.mini_course.title}}</li>
+                        {%endfor%}
+                    </ul>
+                    <div class="ratings d-flex">
+                        {% if course.avgRating >= 1.0 %}
+                        <i class="bi bi-star-fill checked"></i>
+                        {% else %}
+                        <i class="bi bi-star-fill"></i>
+                        {% endif %}
+                        {% if course.avgRating >= 2.0 %}
+                        <i class="bi bi-star-fill checked"></i>
+                        {% else %}
+                        <i class="bi bi-star-fill"></i>
+                        {% endif %}
+                        {% if course.avgRating >= 3.0 %}
+                        <i class="bi bi-star-fill checked"></i>
+                        {% else %}
+                        <i class="bi bi-star-fill"></i>
+                        {% endif %}{% if course.avgRating >= 4.0 %}
+                        <i class="bi bi-star-fill checked"></i>
+                        {% else %}
+                        <i class="bi bi-star-fill"></i>
+                        {% endif %}{% if course.avgRating >= 5.0 %}
+                        <i class="bi bi-star-fill checked"></i>
+                        {% else %}
+                        <i class="bi bi-star-fill"></i>
+                        {% endif %}
+                    </div>
+                    <h5>
+                        <small> Rs. </small>
+                        {{course.fee}}/-
+                        <small style="text-decoration: line-through;">{{course.high_price}}/- </small>
+                    </h5>
+                    <div class="d-flex">
+                        {% if user.is_authenticated %}
+                        {% if course in userCourses %}
+                        <a href="{% url 'fullcourseDetails' course.id course.title %}"
+                            class="StartLearningBtn px-2 py-1 rounded text-center">Start
+                            Learning
+                        </a>
+                        {% else %}
+                        <a href="{% url 'fullcourseDetails' course.id course.title %}"
+                            class="StartLearningBtn px-2 py-1 rounded text-center">Enroll Now
+                        </a>
+                        {% endif %}
+                        {% else %}
+                        <a href="{% url 'fullcourseDetails' course.id course.title %}"
+                            class="StartLearningBtn px-2 py-1 rounded text-center">Enroll Now
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}
+
+{% endblock %}

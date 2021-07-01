@@ -1,0 +1,41 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/events.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<section class="container my-5">
+    <h1>Events</h1>
+    <div>
+        {% for event in events %}
+        <div class="event-div p-4 m-3 shadow rounded">
+            <h3>{{event.title}}</h3>
+            <p><span class="mx-3">{{event.date}}</span>{% if event.person_by %}<i
+                    class="bi bi-record-fill"></i>{{event.person_by}}{% endif %}
+            </p>
+            <div class="d-lg-flex flex-row-reverse justify-content-between">
+                <div class="eventImg">
+                    <img src="/media/{{event.thumbnail}}" alt="event thumbnail">
+                </div>
+                <p>
+                    <span>{{event.description|slice:":200"}}</span><span class="moreSpan ps-5" id="event{{event.id}}">
+                        ...more</span><span class="d-none"
+                        id="moreDesc_event{{event.id}}">{{event.description|slice:"200:"}}</span><span
+                        class="lessbtn d-none ps-3" id="less_event{{event.id}}">...less</span>
+                </p>
+
+            </div>
+            <a href="{{event.registrationForm_link}}">
+                <button class="btn btn-outline-warning rounded">Register for event</button>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'eduPlatform/js/event.js' %}"></script>
+{% endblock %}

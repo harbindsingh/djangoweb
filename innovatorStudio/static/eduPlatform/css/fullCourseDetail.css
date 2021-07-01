@@ -1,0 +1,116 @@
+.coursepreviewVideo {
+  width: 100%;
+}
+.courseFeaturesDiv {
+  max-width: 30%;
+  background-color: #e6b31e;
+  height: fit-content;
+}
+.content-div {
+  width: 70%;
+}
+.reviewContainerDiv {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+.rating_div_container {
+  width: 40%;
+  background-color: #cacaca;
+}
+.courseDescriptionDiv {
+  max-width: 70%;
+}
+.card {
+  width: 15em;
+  background: #cacaca; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #cacaca
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #cacaca
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.nextBatchdate {
+  background-color: #e6b31e;
+  width: fit-content;
+}
+.StartLearningBtn {
+  text-decoration: none;
+  width: 40%;
+  border: 1px solid #343434;
+  color: #343434;
+}
+.EnrollNowBtn {
+  text-decoration: none;
+  width: 40%;
+  border: 1px solid #343434;
+  color: #343434;
+}
+.StartLearningBtn:hover,
+.EnrollNowBtn:hover {
+  background-color: #343434;
+  color: #fff;
+}
+.ratings {
+  width: fit-content;
+  position: relative;
+  transform: rotateY(180deg);
+}
+.ratings input {
+  display: none;
+}
+.ratings label {
+  display: block;
+  cursor: pointer;
+  font-size: 3em;
+}
+.ratings label:before {
+  content: "\2605";
+  position: relative;
+  display: block;
+  opacity: 1;
+}
+.ratings label:after {
+  content: "\2605";
+  position: absolute;
+  display: block;
+  color: #e6b31e;
+  top: 0;
+  opacity: 0;
+}
+.ratings label:hover:after,
+label:hover ~ label:after,
+.ratings input:checked ~ label:after {
+  opacity: 1;
+}
+.givenRating {
+  color: #e6b31e;
+  font-size: 3em;
+}
+.getsyllabusBtn {
+  width: 30%;
+}
+@media screen and (max-width: 766px) {
+  .courseFeaturesDiv {
+    max-width: 100%;
+  }
+  .courseDescriptionDiv {
+    max-width: 100%;
+  }
+  .content-div {
+    width: 100%;
+  }
+  .certificateDivFeature {
+    width: 100%;
+  }
+  .rating_div_container {
+    width: 100%;
+  }
+}

@@ -1,0 +1,29 @@
+.sideOptionBar {
+  /* height: 100vh; */
+  background-color: #cacaca;
+  min-width: 20%;
+}
+.usernamediv {
+  background-color: #e6b31e;
+}
+.menuitems {
+  list-style: none;
+  cursor: pointer;
+}
+.menuitemsLi:hover {
+  background-color: #343434;
+  color: #cacaca;
+}
+.showdiv {
+  background-color: #343434;
+  color: #cacaca;
+}
+.certificatediv {
+  width: 50%;
+}
+.certificatediv img {
+  width: 100%;
+}
+#id_query_description {
+  width: 100%;
+}

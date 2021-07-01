@@ -1,0 +1,108 @@
+.course-slider {
+  overflow-x: hidden;
+  position: relative;
+}
+.card:hover {
+  box-shadow: 0em 0em 0.5em 0em #343434;
+}
+.card p {
+  font-size: 0.8em;
+}
+.course-container .card {
+  min-width: 17em;
+  max-width: 17em;
+}
+.course-container .card:nth-last-child(1) {
+  min-width: 14em;
+}
+.imgCourses {
+  overflow: hidden;
+}
+.imgCourses:hover img {
+  transform: scale(1.1);
+}
+
+#courseNextBtn,
+#coursePrevBtn {
+  color: rgb(52, 52, 52);
+  position: absolute;
+  height: 100%;
+  top: 0;
+  border: none;
+  width: 5%;
+  font-size: 1.2em;
+}
+#courseNextBtn i,
+#coursePrevBtn i {
+  border-radius: 50%;
+  background-color: #e6b31e;
+}
+
+#courseNextBtn {
+  right: -1%;
+  background: rgba(52, 52, 52, 0.5); /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    transparent,
+    rgba(52, 52, 52, 0.5)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(52, 52, 52, 0.5)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#coursePrevBtn {
+  left: -1%;
+  display: none;
+  background: rgba(52, 52, 52, 0.5); /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    transparent,
+    rgba(52, 52, 52, 0.5)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(52, 52, 52, 0.5)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.course-container .card .card-body {
+  background: #e6b31e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #e6b31e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #e6b31e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.checked {
+  color: #e6b31e;
+}
+
+@media screen and (width: 768px) {
+  .course-container .card {
+    min-width: 15em;
+    max-width: 15em;
+  }
+  .course-container .card:nth-last-child(1) {
+    min-width: 9em;
+  }
+}
+@media screen and (max-width: 766px) {
+  .course-container .card:nth-last-child(1) {
+    min-width: 15em;
+  }
+  .course-container .card {
+    min-width: 15em;
+    max-width: 15em;
+  }
+}

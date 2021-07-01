@@ -1,0 +1,103 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/aboutUs.css' %}">
+{% endblock %}
+
+{% block body %}
+<section id="mainbannerSec" class="shadow">
+    <img src="{% static 'eduPlatform/images/aboutUsBanner.jpeg' %}" alt="" class="bannerSizeImg">
+</section>
+<section id="aboutContent" class="container my-4">
+    <p>Innovator’s Studio is an advanced platform to provide you online courses based on Industry level demands with
+        trends & having a wide range of future scopes. You can learn theoretical knowledge by exploring practical world
+        of Technologies & Industries.
+    </p>
+    <p>We train our students by giving examples of daily life applications related to selected course. It enhances
+        interests & creativities at the same time.
+    </p>
+    <p>Students will get the training under the guidance of experienced & skilled team members.
+        OYT team members work hard to find the best possible ways to utilize their knowledge with students. We are here
+        to give you the best efforts to enhance your talents & capabilities. We work on new ideas & let our students to
+        perform tasks related to them. Out motive is to transform the learning of students into the best opportunities
+        for them.
+    </p>
+</section>
+<section id="transformImg">
+    <div class="container ">
+        <h1 class="my-4">How we Transformed</h1>
+        <img src="{% static 'eduPlatform/images/Poster-1@3x.png' %}" alt="" class="bannerSizeImg">
+    </div>
+</section>
+<section class="my-5 container">
+    <div class="d-md-flex justify-content-around">
+        <div id="ourStoryText">
+            <h1 class="my-4">Our Story</h1>
+            <p>OYT team has interacted with many students on different technologies where we found that they have a lot
+                of theoretical knowledge but lack of implementation techniques. When we asked about further
+                modifications in performed tasks, they were unable. This happened due to less practical analysis. When
+                we talk about the online training courses launched before, students are lacking in the quality of
+                education. After knowing that, It becomes prominent to give the real world of knowledge to our new
+                generations.
+            </p>
+            <p>So our OYT team has decided to design Innovator’s Studio platform to explore the world of technologies &
+                industries with practical aspects of life. We want our students to embrace the knowledge not only in
+                words but also in actions. We are focused on creating the best education system where students will
+                experience new visions of the Education.
+            </p>
+        </div>
+        <div id="ourStoryImg">
+            <img src="" alt="ourStory">
+        </div>
+    </div>
+</section>
+<section id="communitySec" class="p-4 my-4 shadow">
+    <p class="text-center joinCommunityText">Join our global community of progress makers and start learning today</p>
+    <!-- Button trigger modal -->
+    <p class="text-center">
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Join our community
+        </button>
+    </p>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Choose your designation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-0">
+                    <div class="container-fluid FormContainer px-3 py-5">
+                        <a href="{% url 'trainerSignup' %}" class="mx-3">
+                            <button class="btn btn-outline-warning designationBtn my-2 text-white">Instructor</button>
+                        </a>
+                        <a href="{% url 'signup' %}" class="mx-3">
+                            <button class="btn btn-outline-warning designationBtn my-2 text-white">Learner</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="infoIS" class="container my-5">
+    <h1 class="mb-4">Know More About Innovator's Studio</h1>
+    <div class="d-lg-flex justify-content-evenly">
+        {% for pdf in pdfs %}
+        <a href="/media/{{pdf.pdf}}/" class="infoCard">
+            <div class=" d-flex justify-content-between p-3 my-3">
+                <h5>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                </h5>
+                <h5><i class="bi bi-arrow-bar-right ms-3"></i></h5>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<style>
+    .courseImg {
+        max-width: 30%;
+    }
+
+    .courseImg img {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 766px) {
+        .courseImg {
+            max-width: 100%;
+        }
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+{% if livecourses %}
+<section class="container my-5">
+    <form method="POST">
+        {% csrf_token %}
+        {% for course in livecourses %}
+        {% if course.title == showCourse %}
+        <button class="btn btn-dark m-2 shadow" name="course"
+            value="{{course.title}},-,{{course.id}}">{{course.title}}</button>
+        {% else %}
+        <button class="btn btn-outline-warning m-2" name="course"
+            value="{{course.title}},-,{{course.id}}">{{course.title}}</button>
+        {% endif %}
+        {% endfor %}
+    </form>
+</section>
+<hr class="headingUnderline">
+<section class="container my-5">
+    <h1> {{selectedcourse.title}}</h1>
+    <div class="d-lg-flex justify-content-between">
+        <p>
+            {{selectedcourse.description}}
+        </p>
+        <div class="courseImg">
+            <img src="/media/{{selectedcourse.thumbnail}}/" alt="">
+        </div>
+    </div>
+    <p>
+        Next Batch Starting From:
+        <strong>{{selectedcourse.next_batch_starting_date}}</strong>
+    </p>
+    <div class="d-flex ">
+        {% if selectedcourse in userCourses %}
+        <div class="mx-3">
+            <a href="{% url 'courseDetails' selectedcourse.id selectedcourse.title %}"
+                class="StartLearningBtn px-2 py-1 btn btn-outline-warning rounded text-center">Start
+                Learning
+            </a>
+        </div>
+        {% else %}
+        <a href="{% url 'courseDetails' selectedcourse.id selectedcourse.title %}"
+            class="StartLearningBtn px-2 py-1 btn btn-outline-warning rounded text-center">Enroll Now
+        </a>
+        {% endif %}
+        <div class="freedemo-btn mx-3">
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Book a Free Demo
+            </button>
+        </div>
+    </div>
+
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,49 @@
+.bannerSizeImg {
+  width: 100%;
+}
+#ourStoryText {
+  width: 60%;
+}
+#ourStoryImg {
+  width: 35%;
+}
+#communitySec {
+  background-color: #e6b31e;
+}
+.joinCommunityText {
+  font-size: large;
+  color: #343434;
+}
+.designationBtn {
+  width: 40%;
+}
+.modal-body a {
+  text-decoration: none;
+}
+.infoCard {
+  width: 45%;
+  background-color: rgba(202, 202, 202, 0.6);
+  text-decoration: none;
+  color: #343434;
+}
+.infoCard:hover {
+  color: rgba(52, 52, 52, 0.8);
+  box-shadow: 0.1em 0.1em 0.5em 0em #343434;
+}
+
+.bi-arrow-bar-right {
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 768px) {
+  #ourStoryText {
+    width: 100%;
+  }
+  #ourStoryImg {
+    width: 100%;
+  }
+  .infoCard div {
+    background-color: rgba(202, 202, 202, 0.6);
+    color: #343434;
+  }
+}

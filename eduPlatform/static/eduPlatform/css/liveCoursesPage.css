@@ -1,0 +1,24 @@
+.imgCourses {
+  overflow: hidden;
+}
+.imgCourses:hover img {
+  transform: scale(1.2);
+}
+.checked {
+  color: #e6b31e;
+}
+.card .card-body {
+  background: #e6b31e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #cacaca
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #cacaca
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

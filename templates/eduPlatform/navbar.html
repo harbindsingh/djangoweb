@@ -1,0 +1,147 @@
+{% load static %}
+<nav class="my-0 py-3 shadow mainNav sticky-top">
+    <div class="container-lg d-lg-flex justify-content-between align-items-center px-0">
+        <div class="d-flex justify-content-between px-3" id="brand-logo-div">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'eduPlatform/images/brandLogo.png' %}" alt="BrandLogo" id="brand-logo">
+            </a>
+            <div class="hamburger d-lg-none">
+                <span class="hamburgerUp d-none"><i class="bi bi-chevron-double-up"></i></span>
+                <span class="hamburgerList"><i class="bi bi-justify"></i></span>
+            </div>
+        </div>
+        <ul class="d-none d-lg-flex navItem my-0 p-0 text-center">
+            <li class="mx-lg-3 "><a href="{% url 'home' %}" class="navLink px-xl-2 py-lg-1 py-0">Home</a></li>
+            <li class="mx-lg-3 "><a href="{% url 'aboutUs' %}" class="navLink px-xl-2 py-lg-1 py-0">About Us</a></li>
+            <li class="mx-lg-3 dropdownItem"><a href="#" class="navLink px-xl-2 py-lg-1 py-0">Courses <i
+                        class="bi bi-chevron-compact-down p-2"></i></a>
+                <ul class="dropdownBox-1 mx-0 p-0">
+                    <div class="d-flex justify-content-around">
+                        <li class="dropdownList my-2 px-3 text-start ">
+                            <a href="#" class="dropdownLink p-1">Package Courses</a>
+                            <hr class="m-0">
+                            <div class="d-flex flex-column">
+                                <ul class="px-2 text-start coursesMenu">
+                                    <li>
+                                        <a href="/fullcourse/6/Basic%20Embedded%20System/"
+                                            class="dropdownLink d-flex justify-content-between">
+                                            Basic Embedded System
+                                            <i class="bi bi-arrow-right-short ps-3"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/fullcourse/7/Advanced%20Embedded%20System/"
+                                            class="dropdownLink d-flex justify-content-between">
+                                            Advanced Embedded System
+                                            <i class="bi bi-arrow-right-short ps-3"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/fullcourse/8/Expert%20%20Embedded%20System/"
+                                            class="dropdownLink d-flex justify-content-between">
+                                            Expert Embedded System
+                                            <i class="bi bi-arrow-right-short ps-3"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/fullcourse/11/Expert%20IoT%20Package/"
+                                            class="dropdownLink d-flex justify-content-between">
+                                            Expert IoT Package
+                                            <i class="bi bi-arrow-right-short ps-3"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/fullcourse/12/Programming%20Language%20Package/"
+                                            class="dropdownLink d-flex justify-content-between">
+                                            Programming Language Package
+                                            <i class="bi bi-arrow-right-short ps-3"></i>
+                                        </a>
+                                    </li>
+                                    <li class="text-end pt-2"><a href="{% url 'allFullcourses' %}"
+                                            class="dropdownLink">MORE
+                                            COURSES...</a>
+
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </li>
+                        <li class="dropdownList my-2 px-3 text-start ">
+                            <a href="{% url 'allMinicourses' %}" class="dropdownLink p-1">Single Courses</a>
+                            <hr class="m-0">
+                            <div>
+                                <ul class="px-2 text-start coursesMenu">
+                                    <li>
+                                        <a href="/course/12/Embedded%20System/"
+                                            class="dropdownLink d-flex justify-content-between">
+                                            Embedded System
+                                            <i class="bi bi-arrow-right-short ps-3"></i>
+                                        </a>
+
+                                    </li>
+                                    <li><a href="/course/13/Internet%20of%20Things%20(IoT)/"
+                                            class="dropdownLink d-flex justify-content-between">
+                                            Internet of Things(I.O.T)
+                                            <i class="bi bi-arrow-right-short ps-3"></i>
+                                        </a>
+
+                                    </li>
+                                    <li><a href="/course/14/PCB%20Designing/"
+                                            class="dropdownLink d-flex justify-content-between">PCB Designing<i
+                                                class="bi bi-arrow-right-short ps-3"></i></a>
+
+                                    </li>
+                                    <li><a href="/course/21/Node%20MCU/"
+                                            class="dropdownLink d-flex justify-content-between">Node MCU<i
+                                                class="bi bi-arrow-right-short ps-3"></i></a>
+
+                                    </li>
+                                    <li><a href="/course/8/HTML%20and%20CSS/"
+                                            class="dropdownLink d-flex justify-content-between">HTML and CSS<i
+                                                class="bi bi-arrow-right-short ps-3"></i></a>
+
+                                    </li>
+                                    <li class="text-end pt-2"><a href="{% url 'allMinicourses' %}"
+                                            class="dropdownLink">MORE
+                                            COURSES...</a>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+
+            <li class="mx-lg-3 "><a href="{% url 'livesessions' %}" class="navLink px-xl-2 py-lg-1 py-0">Live
+                    Sessions</a>
+            </li>
+            <li class="mx-lg-3 "><a href="{% url 'events' %}" class="navLink px-xl-2 py-lg-1 py-0">Events</a>
+            </li>
+            <hr class="d-lg-none">
+            {% if user.is_authenticated %}
+            <li class="d-lg-none mx-lg-3 "><a href="{% url 'dashboard' user.username user.id %}"
+                    class="navLink px-xl-2 py-lg-1 py-0">{{user.first_name}}</a></li>
+            <li class="d-lg-none mx-lg-3 "><a href="{% url 'logout' %}" class="navLink px-xl-2 py-lg-1 py-0">Logout</a>
+            </li>
+            {% else %}
+            <li class="d-lg-none mx-lg-3 "><a href="{% url 'login' %}"
+                    class="navLink px-xl-2 py-lg-1 py-0 login">LogIn</a>
+            </li>
+            <li class="d-lg-none mx-lg-3 "><a href="{% url 'signup' %}"
+                    class="navLink px-xl-2 py-lg-1 py-0 login">SignUp</a></li>
+
+            {% endif %}
+        </ul>
+        <ul class="d-none d-lg-flex navItem my-0 p-0 text-center">
+            {% if user.is_authenticated %}
+            <li class="mx-lg-3 "><a href="{% url 'dashboard' user.username user.id %}"
+                    class="navLink px-xl-2 py-lg-1 py-0">{{user.first_name}}</a></li>
+            <li class="mx-lg-3 "><a href="{% url 'logout' %}" class="navLink px-xl-2 py-lg-1 py-0">Logout</a></li>
+            {% else %}
+            <li class="mx-lg-3 "><a href="{% url 'login' %}" class="navLink px-xl-2 py-lg-1 py-0 login">LogIn</a></li>
+            <li class="mx-lg-3 "><a href="{% url 'signup' %}" class="navLink px-xl-2 py-lg-1 py-0 login">SignUp</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

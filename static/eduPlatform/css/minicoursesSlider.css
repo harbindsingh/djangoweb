@@ -1,0 +1,99 @@
+.minicourse-slider {
+  overflow-x: hidden;
+  position: relative;
+}
+.minicourse-container .card {
+  min-width: 15em;
+  max-width: 15em;
+}
+.minicourse-container .card:nth-last-child(1) {
+  min-width: 13em;
+}
+.btn {
+  font-size: 0.9em;
+}
+.imgCourses {
+  overflow: hidden;
+}
+.imgCourses:hover img {
+  transform: scale(1.2);
+}
+
+#minicourseNextBtn,
+#minicoursePrevBtn {
+  color: #cacaca;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  border: none;
+  width: 5%;
+  font-size: 1.2em;
+}
+#minicourseNextBtn i,
+#minicoursePrevBtn i {
+  border-radius: 50%;
+  background-color: #343434;
+}
+
+#minicourseNextBtn {
+  right: -1%;
+  background: rgba(52, 52, 52, 0.5); /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    transparent,
+    rgba(52, 52, 52, 0.5)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(52, 52, 52, 0.5)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#minicoursePrevBtn {
+  left: -1%;
+  display: none;
+  background: rgba(52, 52, 52, 0.5); /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    transparent,
+    rgba(52, 52, 52, 0.5)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(52, 52, 52, 0.5)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.minicourse-container .card .card-body {
+  background: #cacaca; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #cacaca
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #cacaca
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@media screen and (width: 768px) {
+  .minicourse-container .card {
+    min-width: 10em;
+    max-width: 10em;
+  }
+  .minicourse-container .card:nth-last-child(1) {
+    min-width: 9em;
+  }
+}
+@media screen and (max-width: 766px) {
+  .minicourse-container .card:nth-last-child(1) {
+    min-width: 10em;
+  }
+  .minicourse-container .card {
+    min-width: 10em;
+    max-width: 10em;
+  }
+}

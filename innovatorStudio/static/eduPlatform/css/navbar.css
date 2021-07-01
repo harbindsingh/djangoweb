@@ -1,0 +1,130 @@
+.mainNav {
+  z-index: 1000;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid #e6b31e;
+}
+#brand-logo-div {
+  width: 20%;
+}
+#brand-logo {
+  width: 100%;
+}
+.navItem {
+  list-style: none;
+}
+.navLink {
+  font-size: 1.1em;
+  background-color: rgb(255, 255, 255);
+  color: #343434;
+  text-decoration: none;
+  transition: 0.2s ease-in;
+}
+.navLink:hover {
+  background-color: #343434;
+  color: #fcfaf1;
+  border-radius: 0.2em;
+}
+.hamburger {
+  cursor: pointer;
+}
+.hamburgerUp,
+.hamburgerList {
+  font-size: 1.5em;
+}
+/* courses ---- dropdown level 01  */
+
+.dropdownBox-1 {
+  width: fit-content;
+  max-width: 600px;
+  border-radius: 0.2em;
+  display: none;
+  background-color: #343434;
+  color: #fcfaf1;
+  position: absolute;
+  top: 3.5em;
+  left: 35%;
+}
+.dropdownList {
+  border-left: 0.5px solid #fcfaf1;
+  border-radius: 0.5px solid #fcfaf1;
+  list-style: none;
+}
+.dropdownLink {
+  text-decoration: none;
+  color: #fcfaf1;
+}
+.dropdownLink:hover {
+  font-weight: bold;
+  color: #fcfaf1;
+}
+
+.coursesMenu {
+  list-style: none;
+  font-size: 0.9em;
+}
+
+.login {
+  border: 1px solid #343434;
+  border-radius: 0.2em;
+}
+.coursesname:hover {
+  color: #cacaca;
+}
+small {
+  font-size: 0.7em;
+}
+.courseDesc {
+  max-width: 10em;
+}
+.offlineCoursesList {
+  max-width: 15em;
+}
+
+@media only screen and (min-width: 1026px) {
+  .dropdownItem:hover .dropdownBox-1 {
+    display: block;
+  }
+  #onlineDrpDwn:hover .dropdownBox-2 {
+    display: block;
+  }
+  #offlineDrpDwn:hover .dropdownBox-3 {
+    display: block;
+  }
+}
+
+#selfPacedCourses {
+  border-left: 1px solid #fcfaf1;
+}
+hr {
+  opacity: 1;
+  color: #fcfaf1;
+}
+/* @media only screen and (max-width: 1024px) {
+  .dropdownBox-1 {
+    left: 15em;
+  }
+} */
+
+@media only screen and (max-width: 768px) {
+  .navItem {
+    position: absolute;
+    background-color: #343434;
+    width: 100%;
+  }
+  #brand-logo-div {
+    width: 100%;
+  }
+  #brand-logo {
+    width: 40%;
+  }
+  .navLink {
+    background-color: #343434;
+    color: #fcfaf1;
+  }
+  .dropdownBox-1,
+  .dropdownBox-2,
+  .dropdownBox-3 {
+    position: initial;
+    margin: 0 auto;
+  }
+}

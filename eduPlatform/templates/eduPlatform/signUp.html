@@ -1,0 +1,47 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/signup.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<section class="p-5">
+    <h1 class="text-center">SignUp</h1>
+    <hr class="headingUndelineStyle2 mx-auto">
+    <form action="" method="POST" class="mt-5 mx-auto signupForm">
+        {% csrf_token %}
+        {% for error in userForm.errors %}
+        <p class="bg-danger text-white">{{error}}</p>
+        {% endfor %}
+        <div class="row my-3">
+            <label for="firstname" class="col-lg-3 text-lg-end">{{userForm.first_name.label}}</label>
+            <span class="col-3">{{userForm.first_name}}</span>
+            <label for="lastname" class="col-lg-2 text-lg-end">{{userForm.last_name.label}}</label>
+            <span class="col-3">{{userForm.last_name}}</span>
+        </div>
+        <div class="row my-3">
+            <label for="username" class="col-lg-3 text-lg-end">{{userForm.username.label}}</label>
+            <span class="col-3">{{userForm.username}} <p><small>*Username must be your email id</small></p></span>
+        </div>
+        <div class="row my-3">
+            <label for="password1" class="col-lg-3 text-lg-end">{{userForm.password1.label}}</label>
+            <span class="col-3">{{userForm.password1}}</span>
+            <label for="password2" class="col-lg-2 text-lg-end">{{userForm.password2.label}}</label>
+            <span class="col-3">{{userForm.password2}}</span>
+        </div>
+        <div class="row my-3 mx-lg-5">
+            <div class="col-lg-1"></div>
+            <small class="mx-lg-5 col-lg-6">{{userForm.password1.help_text}}</small>
+        </div>
+        <div class="text-md-center">
+            <button type="submit" class="btn btn-outline-dark submitbtn">SignUp</button>
+        </div>
+    </form>
+    <div class="text-center">
+        <small>Already a <strong>Registered User?</strong> <a href="{% url 'login' %}">LOGIN</a></small>
+    </div>
+</section>
+{% endblock %}

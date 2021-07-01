@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+}
+body {
+  background-color: #fcfaf1;
+  color: #343434;
+  font-family: sans-serif;
+}
+
+.webbody {
+  max-width: 1400px;
+}
+
+.headingUnderline {
+  background: #343434; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #fcfaf1,
+    #343434,
+    #fcfaf1
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #fcfaf1,
+    #343434,
+    #fcfaf1
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.checked {
+  color: #e6b31e;
+}
+.headingUndelineStyle2 {
+  background: #343434; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #343434,
+    #fcfaf1
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #343434,
+    #fcfaf1
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.modal-body {
+  background-image: url("../images/demoFormBg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: max-content;
+}
+.FormContainer {
+  background: rgba(52, 52, 52, 0.85);
+}
+
+.btn:focus {
+  box-shadow: none;
+}
+.btn-outline-warning {
+  color: #000;
+}
+.btn-outline-warning:focus {
+  box-shadow: none;
+}
+.btn-danger:focus {
+  box-shadow: none;
+}
+.position-fixed {
+  width: 99%;
+  overflow-x: scroll;
+}
+.btn-container {
+  background-color: #343434;
+  border: 1px solid #343434;
+  transform: skewX(-15deg);
+  width: max-content;
+}
+.freedemo-btn {
+  left: 15em;
+}
+
+#whatsapp-btn {
+  text-decoration: none;
+  color: #fff;
+}
+.btn-warning {
+  border-radius: 0;
+  background-color: #e6b31e;
+}
+.btn-outline-warning:hover {
+  border-radius: 0;
+  background-color: #e6b31e;
+}

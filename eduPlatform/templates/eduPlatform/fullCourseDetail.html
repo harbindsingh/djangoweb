@@ -1,0 +1,369 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/fullCourseDetail.css' %}">
+<link rel="stylesheet" href="{% static 'eduPlatform/css/courseDetail.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<section class="my-5 ">
+    <h1 class="d-lg-none">{{course.title}}</h1>
+    <hr class="headingUndelineStyle2 d-lg-none">
+
+    <div class="d-lg-flex flex-row-reverse justify-content-between container">
+        <div class="courseFeaturesDiv shadow mb-3 pb-2">
+            <video controls class="coursepreviewVideo p-1">
+                <source src="/media/{{course.course_preview_video}}" type="video/mp4">
+            </video>
+            <div class="text-center">
+                {% if user.is_authenticated %}
+                {% if course in userCourses %}
+                {% if paidFlag %}
+                <!-- <a href="{% url 'startcourse' user.username course.id course.title %}"
+                    class="StartLearningBtn px-2 py-1 rounded text-center">
+                    <button class="btn btn-outline-dark">Start Learning</button>
+                </a> -->Go to the courses covered and start learning.
+                {% else %}
+                {% endif %}
+                {% else %}
+                <!-- <form action="{% url 'registeration'%}">
+                    <div>
+                        <strong>Select Mode of Study:</strong>
+                        <select name="courseMode" id="courseMode">
+                            {% if course.live_one_to_one %}
+                            <option value="liveO2O">Live: One to one</option>
+                            {% endif %}
+                            {% if course.self_paced %}
+                            <option value="selfPaced">Self Paced</option>
+                            {% endif %}
+                            {% if course.offline %}
+                            <option value="offline">Offline</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-dark EnrollNowBtn px-0 py-1 rounded text-center my-3"
+                        name="courseEnrollBtn" value="{{course.id}}, {{course.title}}">Enroll Now</button>
+                </form> -->
+                {% endif %}
+                {% else %}
+                <!-- <form action="{% url 'registeration'%}">
+                    <div>
+                        <div><strong>Select Mode of Study:</strong></div>
+                        <select name="courseMode" id="courseMode" class="my-2">
+                            {% if course.live_one_to_one %}
+                            <option value="liveO2O">Live: One to one</option>
+                            {% endif %}
+                            {% if course.self_paced %}
+                            <option value="selfPaced">Self Paced</option>
+                            {% endif %}
+                            {% if course.offline %}
+                            <option value="offline">Offline</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-dark EnrollNowBtn px-0 py-1 rounded text-center my-3"
+                        name="courseEnrollBtn" value="{{course.id}}, {{course.title}}">Enroll Now</button>
+                </form> -->
+                {% endif %}
+            </div>
+        </div>
+        <div class="courseDescriptionDiv me-lg-5">
+            <h1 class="d-none d-lg-block">{{course.title}}</h1>
+            <hr class="headingUndelineStyle2 d-none d-lg-block">
+            <p>{{course.description|slice:"0:200"}} <a href="#aboutDiv" class="text-dark">...more</a></p>
+            <p class="nextBatchdate p-3 mt-4">New Bach Starting from: <strong>{{course.next_batch_starting_date}}
+                </strong>
+            </p>
+            <div class="">
+                {% if user.is_authenticated %}
+                {% if course in userCourses %}
+                {% if paidFlag %}
+                <!-- <a href="{% url 'startcourse' user.username course.id course.title %}"
+                    class="StartLearningBtn px-2 py-1 mb-3 rounded text-center">
+                    <button class="btn btn-outline-dark">Start Learning</button>
+                </a> -->Go to the courses covered and start learning.
+                {% else %}
+                <p>You haven't paid for this course. Kindly pay to get started with this course.</p>
+                <div>
+                    <form action="">
+                        <button
+                            class="btn btn-outline-dark StartLearningBtn px-0 py-1 mb-3 rounded text-center disabled"
+                            name="courseEnrollBtn" value="{{course.id}}, {{course.title}}">Start Learning</button>
+                    </form>
+                </div>
+                {% endif %}
+                {% else %}
+                <form action="{% url 'registeration'%}">
+                    <div>
+                        <strong>Select Mode of Study:</strong>
+                        <select name="courseMode" id="courseMode" class="my-2">
+                            {% if course.live_one_to_one %}
+                            <option value="liveO2O">Live: One to one</option>
+                            {% endif %}
+                            {% if course.self_paced %}
+                            <option value="selfPaced">Self Paced</option>
+                            {% endif %}
+                            {% if course.offline %}
+                            <option value="offline">Offline</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-dark EnrollNowBtn px-0 py-1 rounded text-center my-3"
+                        name="courseEnrollBtn" value="{{course.id}}, {{course.title}}">Enroll Now</button>
+                </form>
+                {% endif %}
+                {% else %}
+                <form action="{% url 'registeration'%}">
+                    <div>
+                        <strong>Select Mode of Study:</strong>
+                        <select name="courseMode" id="courseMode">
+                            {% if course.live_one_to_one %}
+                            <option value="liveO2O">Live: One to one</option>
+                            {% endif %}
+                            {% if course.self_paced %}
+                            <option value="selfPaced">Self Paced</option>
+                            {% endif %}
+                            {% if course.offline %}
+                            <option value="offline">Offline</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-dark EnrollNowBtn px-0 py-1 rounded text-center my-3"
+                        name="courseEnrollBtn" value="{{course.id}}, {{course.title}}">Enroll Now</button>
+                </form>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="menuLinks p-2">
+        <div class="d-flex container">
+            <button class="btn mx-2 menubtns activeMenu" targetDiv="aboutDiv">About</button>
+            <button class="btn mx-2 menubtns" targetDiv="syllabusDiv">Courses Covered</button>
+            <button class="btn mx-2 menubtns" targetDiv="reviewDiv">Review</button>
+        </div>
+    </div>
+    <div class="d-lg-flex justify-content-between my-4 container">
+        <div id="aboutDiv" class="content-div">
+            <h3 class="mb-4">About The Course</h3>
+            <p>{{course.description}}</p>
+        </div>
+        <div id="syllabusDiv" class="content-div d-none">
+            <div class="d-flex flex-wrap justify-content-center">
+                {% for mini_course in mini_course_list %}
+                <div class="card m-2">
+                    <a href="{% url 'courseDetails' mini_course.id mini_course.title %}" class="imgCourses mx-auto">
+                        <img src="/media/{{mini_course.thumbnail}}" class="card-img-top"
+                            alt="{{mini_course.title}}_image">
+                    </a>
+                    <div class="card-body pt-0">
+                        <h5 class="card-title mt-3 mb-0">{{mini_course.title|slice:":50"}}</h5>
+                        <small class="m-0">Duration Of course: {{mini_course.get_duration}} hrs</small>
+                        <p class="card-text mb-1">{{mini_course.description|slice:":125"}}...</p>
+                        <div class="ratings d-flex">
+                            {% if mini_course.avgRating >= 1.0 %}
+                            <i class="bi bi-star-fill checked"></i>
+                            {% else %}
+                            <i class="bi bi-star-fill"></i>
+                            {% endif %}
+                            {% if mini_course.avgRating >= 2.0 %}
+                            <i class="bi bi-star-fill checked"></i>
+                            {% else %}
+                            <i class="bi bi-star-fill"></i>
+                            {% endif %}
+                            {% if mini_course.avgRating >= 3.0 %}
+                            <i class="bi bi-star-fill checked"></i>
+                            {% else %}
+                            <i class="bi bi-star-fill"></i>
+                            {% endif %}{% if mini_course.avgRating >= 4.0 %}
+                            <i class="bi bi-star-fill checked"></i>
+                            {% else %}
+                            <i class="bi bi-star-fill"></i>
+                            {% endif %}{% if mini_course.avgRating >= 5.0 %}
+                            <i class="bi bi-star-fill checked"></i>
+                            {% else %}
+                            <i class="bi bi-star-fill"></i>
+                            {% endif %}
+                        </div>
+                        {% if paidFlag %}
+                        <a href="{% url 'courseDetails' mini_course.id mini_course.title %}"
+                            class="StartLearningBtn px-5 py-2 rounded text-center">Start
+                            Learning
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="reviewDiv" class="content-div d-none mb-3">
+            <div class="d-lg-flex">
+                <div class="rating_div_container p-2">
+                    {% if request.user.is_authenticated %}
+                    {% if paidFlag %}
+                    <div class="my-5">
+                        <h4>Rate this Course</h4>
+                        {% if not rate_flag %}
+                        <p class="m-0">You haven't yet rated this course. Please support and rate this.</p>
+                        <form action="" method="POST" class="mx-5">
+                            {%csrf_token%}
+                            <div class="ratings d-flex">
+                                <input type="radio" name="rating" id="star5" value="5"><label for="star5"
+                                    class="mx-1"></label>
+                                <input type="radio" name="rating" id="star4" value="4"><label for="star4"
+                                    class="mx-1"></label>
+                                <input type="radio" name="rating" id="star3" value="3"><label for="star3"
+                                    class="mx-1"></label>
+                                <input type="radio" name="rating" id="star2" value="2"><label for="star2"
+                                    class="mx-1"></label>
+                                <input type="radio" name="rating" id="star1" value="1" checked><label for="star1"
+                                    class="mx-1"></label>
+                            </div>
+                            <textarea name="review" id="" cols="30" rows="10"></textarea>
+                            <button type="submit" name="rateBtn" class="btn btn-outline-warning">Submit</button>
+                        </form>
+                        {%else%}
+                        <div>
+                            <p class="m-0">
+                                You have given
+                                <span class="givenRating">{% for star in rangeRating %}&#9733{%endfor%}</span>
+                                rating to this course. Thank you!
+                            </p>
+                            <p class="mt-4 mb-0">If you want to change your rating you can rate this course again:</p>
+                            <form action="" method="POST" class=" mx-5">
+                                {%csrf_token%}
+                                <div class="ratings d-flex">
+                                    <input type="radio" name="rating" id="star5" value="5"><label for="star5"
+                                        class="mx-1"></label>
+                                    <input type="radio" name="rating" id="star4" value="4"><label for="star4"
+                                        class="mx-1"></label>
+                                    <input type="radio" name="rating" id="star3" value="3"><label for="star3"
+                                        class="mx-1"></label>
+                                    <input type="radio" name="rating" id="star2" value="2"><label for="star2"
+                                        class="mx-1"></label>
+                                    <input type="radio" name="rating" id="star1" value="1" checked><label for="star1"
+                                        class="mx-1"></label>
+                                </div>
+                                <p>{{given_review}}</p>
+                                <h3>Give Review again</h3>
+                                <textarea name="review" id="" cols="30" rows="10"></textarea>
+                                <button type="submit" name="reRate" class="btn btn-outline-warning">Rate Again</button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <h3>Plaese purchase course to give review to the course. Thank you</h3>
+                    {%endif%}
+                    {% else %}
+                    <h3>Plaese purchase course to give review to the course. Thank you</h3>
+                    {%endif%}
+                </div>
+                <div class="mx-3 reviewContainerDiv">
+                    {% for review in allreviews %}
+                    {% if review.review %}
+                    <div class="mb-3">
+                        <p class="m-0 p-0">{{review.review}}</p>
+                        <p class="mb-1"><small> -by {{review.user}}</small></p>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="certificateDivFeature">
+            <div class="featureDiv p-2">
+                <strong>Course Features</strong>
+                <ul class="p-0 featureList my-1">
+                    <li class="d-flex justify-content-between pe-2 my-3">
+                        <p class="mb-1 px-1">
+                            <i class="bi bi-clock-fill px-2"></i>Duration
+                        </p>
+                        <p class="mb-1 px-2">{{course.get_duration}} hrs</p>
+                    </li>
+                    <li class="d-flex justify-content-between pe-2 my-3">
+                        <p class="mb-1 px-1">
+                            <i class="bi bi-tv-fill px-2"></i>Available Modes
+                        </p>
+                        <p class="mb-1 px-2 d-flex">{% if course.live_one_to_one %}
+                        <div>Live</div>{% endif %}
+                        {% if course.self_paced %}
+                        <div>/Online </div>{% endif %}
+                        {% if course.offline %}
+                        <div>/Offline</div>{% endif %}</p>
+                    </li>
+                    <li class="d-flex justify-content-between pe-2 my-3">
+                        <p class="mb-1 px-1">
+                            <i class="bi bi-bookshelf px-2"></i>Course Level
+                        </p>
+                        <p class="mb-1 px-2">Intermediate</p>
+                    </li>
+                    <li class="d-flex justify-content-between pe-2 my-3">
+                        <p class="mb-1 px-1">
+                            <i class="bi bi-book-half px-2"></i>Language
+                        </p>
+                        <p class="mb-1 px-2">English/Hindi</p>
+                    </li>
+                    <li class="d-flex justify-content-between pe-2 mt-3">
+                        <p class="mb-1 px-1">
+                            <i class="bi bi-patch-check-fill px-2"></i>Certificate
+                        </p>
+                        <p class="mb-1 px-2">Yes</p>
+                    </li>
+                </ul>
+
+            </div>
+
+            <img src="{% static 'eduPlatform/images/sampleCertificate.png' %}" class="m-3" alt="sample Certificate">
+        </div>
+    </div>
+</section>
+<section class="container my-5">
+    <div class="my-5">
+        <h4>Download the full syllabus for the course here:</h4>
+        <form action="" method="POST" class="my-3 text-center">
+            {% csrf_token %}
+            <div class="my-2 row">
+                <div class="col-lg-2 text-lg-end">
+                    <label for="id_first_name" class="mx-1">{{getsyllabusForm.first_name.label}}:</label>
+                </div>
+                <span class="col-lg-3">{{getsyllabusForm.first_name}}</span>
+                <div class="col-lg-2 text-lg-end">
+                    <label for="id_last_name" class="mx-1">{{getsyllabusForm.last_name.label}}:</label>
+                </div>
+                <span class="col-lg-3">{{getsyllabusForm.last_name}}</span>
+            </div>
+            <div class="my-2 row">
+                <div class="col-lg-2 text-lg-end">
+                    <label for="id_email" class="mx-1">{{getsyllabusForm.email.label}}:</label>
+                </div>
+                <span class="col-lg-3">{{getsyllabusForm.email}}</span>
+                <div class="col-lg-2 text-lg-end">
+                    <label for="id_phone_no" class="mx-1">Contact:</label>
+                </div>
+                <span class="col-lg-3">{{getsyllabusForm.phone_no}}</span>
+            </div>
+            <div class="text-lg-center my-3">
+                <button class="btn btn-outline-dark getsyllabusBtn" name="getSyllabus">Get Syllabus</button>
+            </div>
+        </form>
+    </div>
+    {% if request.user.is_authenticated %}
+    <div>
+        {% if course in userCourses %}
+        <form action="{% url 'unenroll' course.id course.title%}">
+            <button class="btn btn-danger">Un Enroll</button>
+        </form>
+        {% endif %}
+    </div>
+    {%endif%}
+
+    {% endblock %}
+    {% block scripts %}
+    <script src="{% static 'eduPlatform/js/corseDetail.js' %}"></script>
+    {% endblock %}

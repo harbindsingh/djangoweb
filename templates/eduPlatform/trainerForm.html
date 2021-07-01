@@ -1,0 +1,34 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/trainerForm.css' %}">
+{% endblock %}
+{% block body %}
+<section class="container my-5">
+    <h1 class="text-center my-5">Trainer's Form</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row my-3">
+            <label for="firstname" class="col-lg-3 text-lg-end">{{trainerForm.first_name.label}}</label>
+            <span class="col-3">{{trainerForm.first_name}}</span>
+            <label for="lastname" class="col-lg-2 text-lg-end">{{trainerForm.last_name.label}}</label>
+            <span class="col-3">{{trainerForm.last_name}}</span>
+        </div>
+        <div class="row my-3">
+            <label for="username" class="col-lg-3 text-lg-end">{{trainerForm.phone_no.label}}</label>
+            <span class="col-3">{{trainerForm.phone_no}}</span>
+            <label for="email" class="col-lg-2 text-lg-end">{{trainerForm.email.label}}</label>
+            <span class="col-3">{{trainerForm.email}}</span>
+        </div>
+        <div class="row my-3">
+            <label for="password1" class="col-lg-3 text-lg-end">{{trainerForm.specialized_in.label}}</label>
+            <span class="col-4">{{trainerForm.specialized_in}}</span>
+        </div>
+        <div class="text-md-center">
+            <button type="submit" class="btn btn-outline-dark submitbtn">SignUp</button>
+        </div>
+    </form>
+</section>
+
+{% endblock %}

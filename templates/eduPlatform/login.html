@@ -1,0 +1,31 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/login.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<section class="container my-5 text-lg-center">
+    <h1 class="my-3">Login</h1>
+    <hr class="headingUnderline">
+    <form action="" method="POST" id="loginform">
+        {% csrf_token %}
+        {%for message in messages%}
+        <div class="my-3 msgdiv">{{message}}</div>
+        {%endfor%}
+        <div class="row my-2 justify-content-center">
+            <label for="username" class="col-lg-2 text-lg-end">Username</label>
+            <input type="text" name="username" placeholder="Username" id="username" class="col-lg-4">
+        </div>
+        <div class="row my-2 justify-content-center">
+            <label for="password" class="col-lg-2 text-lg-end">Password</label>
+            <input type="password" name="password" placeholder="Password" id="password" class="col-lg-4">
+        </div>
+        <button type="submit" class="mx-5 my-2 loginbtn">Login</button>
+        <p><small><a href="{% url 'password_reset' %}">Forgot Password?</a></small></p>
+    </form>
+</section>
+{% endblock %}

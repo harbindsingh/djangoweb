@@ -1,0 +1,264 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'eduPlatform/css/allFullCourse.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<section class="d-lg-flex">
+    <section class="sideOptionBar">
+        <div class="d-flex pt-5 pb-3 px-5 usernamediv">
+            <h4 class="pe-1">Hello,</h4>
+            <h4 style="text-transform: uppercase;">{{request.user.first_name}}</h4>
+        </div>
+        <div>
+            <ul class="menuitems p-0">
+                <li class="py-3 my-1 d-flex justify-content-between px-3 menuitemsLi showdiv" targerdiv="myCourses">
+                    <p> My Courses</p>
+                    <p>
+                        <i class="bi bi-caret-right"></i>
+                    </p>
+                </li>
+                <li class="py-3 my-1 d-flex justify-content-between px-3 menuitemsLi" targerdiv="upcomingEvents">
+                    <p> Upcoming Events</p>
+                    <p>
+                        <i class="bi bi-caret-right"></i>
+                    </p>
+                </li>
+                <li class="py-3 my-1 d-flex justify-content-between px-3 menuitemsLi" targerdiv="certificates">
+                    <p> Certificate</p>
+                    <p>
+                        <i class="bi bi-caret-right"></i>
+                    </p>
+                </li>
+                <li class="py-3 my-1 d-flex justify-content-between px-3 menuitemsLi" targerdiv="query">
+                    <p> Have Query?</p>
+                    <p>
+                        <i class="bi bi-caret-right"></i>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="mx-lg-5 mx-1">
+        <div id="myCourses" class="dashboardDivs">
+            <div class="my-4">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <button
+                        class="btn {% if allTag %}btn-dark{%else%} btn-outline-dark{% endif %} m-2 shadow coursebtns"
+                        name="allcourse" value="allCourses">All
+                        Courses</button>
+                    <button
+                        class="btn  {% if liveTag %}btn-dark{%else%} btn-outline-dark{% endif %} m-2 shadow coursebtns"
+                        name="livecourse" value="live">Live
+                        Courses</button>
+                    <button
+                        class="btn  {% if fullTag %}btn-dark{%else%} btn-outline-dark{% endif %} m-2 shadow coursebtns"
+                        name="fullcourse" value="fullCourses">Package
+                        Courses</button>
+                    <button
+                        class="btn  {% if miniTag %}btn-dark{%else%} btn-outline-dark{% endif %} m-2 shadow coursebtns"
+                        name="minicourse" value="miniCourses">Single
+                        Courses</button>
+                </form>
+            </div>
+            <div class="d-flex flex-wrap mx-5 mx-lg-0">
+                {% for course in courses %}
+                {% if course.mini_course %}
+                <div class="card m-2">
+                    <a href="{% url 'courseDetails' course.mini_course.id course.mini_course.title %}"
+                        class="imgCourses mx-auto">
+                        <img src="/media/{{course.mini_course.thumbnail}}" class="card-img-top"
+                            alt="{{course.mini_course.title}}_image">
+                        <div class="card-body pt-0">
+                            <div class="ratings d-flex">
+                                {% if course.mini_course.avgRating >= 1.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}
+                                {% if course.mini_course.avgRating >= 2.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}
+                                {% if course.mini_course.avgRating >= 3.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}{% if course.mini_course.avgRating >= 4.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}{% if course.mini_course.avgRating >= 5.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}
+                            </div>
+
+                            <h5 class="card-title my-0">{{course.mini_course.title|slice:":50"}}</h5>
+                            <small class="m-0">Duration Of course: {{course.mini_course.get_duration}} hrs</small>
+                            <p class="card-text mb-1">{{course.mini_course.description|slice:":125"}}...</p>
+
+                            <h5>
+                                <small> Rs. </small>
+                                {{course.mini_course.fee}}/-
+                                <small style="text-decoration: line-through;">{{course.mini_course.high_price}}/-
+                                </small>
+                            </h5>
+                            <div class="d-flex">
+                                <a href="{% url 'courseDetails' course.mini_course.id course.mini_course.title %}"
+                                    class="StartLearningBtn px-2 py-1 rounded text-center">Start
+                                    Learning
+                                </a>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+                {% if course.full_course %}
+                <div class="card m-2">
+                    <a href="{% url 'fullcourseDetails' course.full_course.id course.full_course.title %}"
+                        class="imgCourses mx-auto">
+                        <img src="/media/{{course.full_course.thumbnail}}" class="card-img-top"
+                            alt="{{course.full_course.title}}_image">
+                        <div class="card-body pt-0">
+                            <div class="ratings d-flex">
+                                {% if course.full_course.avgRating >= 1.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}
+                                {% if course.full_course.avgRating >= 2.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}
+                                {% if course.full_course.avgRating >= 3.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}{% if course.full_course.avgRating >= 4.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}{% if course.full_course.avgRating >= 5.0 %}
+                                <i class="bi bi-star-fill checked"></i>
+                                {% else %}
+                                <i class="bi bi-star-fill"></i>
+                                {% endif %}
+                            </div>
+
+                            <h5 class="card-title my-0">{{course.full_course.title|slice:":50"}}</h5>
+                            <small class="m-0">Duration Of course: {{course.full_course.get_duration}} hrs</small>
+                            <p class="card-text mb-1">{{course.full_course.description|slice:":125"}}...</p>
+
+                            <h5>
+                                <small> Rs. </small>
+                                {{course.full_course.fee}}/-
+                                <small style="text-decoration: line-through;">{{course.full_course.high_price}}/-
+                                </small>
+                            </h5>
+                            <div class="d-flex">
+                                <a href="{% url 'fullcourseDetails' course.full_course.id course.full_course.title %}"
+                                    class="StartLearningBtn px-2 py-1 rounded text-center">Start
+                                    Learning
+                                </a>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+        <div id="upcomingEvents" class="d-none dashboardDivs">
+            <div>
+                {% for event in events %}
+                <div class="event-div p-4 m-3 shadow rounded">
+                    <h3>{{ event.title }}</h3>
+                    <p><span class="mx-3">{{ event.date }}</span>{% if event.person_by %}<i
+                            class="bi bi-record-fill"></i>{{ event.person_by }}{% endif %}
+                    </p>
+                    <div class="d-lg-flex flex-row-reverse justify-content-between">
+                        <div class="eventImg">
+                            <img src="/media/{{event.thumbnail}}" alt="event thumbnail">
+                        </div>
+                        <p>
+                            <span>{{ event.description | slice:":200"}}</span><span class="moreSpan ps-5"
+                                id="event{{event.id}}">
+                                ...more</span><span class="d-none" id="moreDesc_event{{event.id}}">{{ event.description
+                                | slice:"200:"}}</span><span class="lessbtn d-none ps-3"
+                                id="less_event{{event.id}}">...less</span>
+                        </p>
+
+                    </div>
+                    <a href="{{event.registrationForm_link}}">
+                        <button class="btn btn-outline-warning rounded">Register for event</button>
+                    </a>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div id="certificates" class="d-none dashboardDivs my-5">
+            <h3>Your Certificates</h3>
+            {% for certificate in certificates %}
+            {% if certificate %}
+            <div class="d-flex flex wrap my-3">
+                <div class="mx-3 certificatediv">
+                    <img src="/media/{{ certificate }}" alt="certificate">
+                </div>
+                <div>
+                    <a href="/media/{{ certificate }}"><button class="btn btn-warning">Download your certificate <i
+                                class="bi bi-arrow-bar-down"></i></button></a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor%}
+        </div>
+        <div id="query" class="d-none dashboardDivs my-5">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="d-flex row my-3">
+                    <label for="id_title" class=" col-4">Query Title:</label>
+                    <span class="col-7">{{queryForm.title}}</span>
+                </div>
+                <div class="d-flex row my-3">
+                    <label for="id_query_description" class=" col-4">Query Description:</label>
+                    <span class="col-7">{{queryForm.query_description}}</span>
+                </div>
+
+                <button type="submit" class="btn btn-outline-warning" name="queryBtn">Submit Query</button>
+            </form>
+
+            <!-- <div class="my-5">
+                <h3>Your Queries:</h3>
+                {% for query in queries%}
+                <ul>
+                    <li>
+                        <h4>{{query.title}}</h4>
+                    </li>
+                    <li>{{query.description}}</li>
+                </ul>
+                {% endfor %}
+            </div> -->
+        </div>
+
+    </section>
+</section>
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'eduPlatform/js/dashboard.js' %}"></script>
+
+{% endblock %}

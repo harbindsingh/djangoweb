@@ -1,0 +1,66 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/startCourse.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<section class="container my-5">
+    <h1>{{course.title}}</h1>
+    <hr class="headingUndelineStyle2">
+    <div class="d-lg-flex justify-content-around flex-row-reverse my-5">
+        <div class="courseImg my-3">
+            <img src="/media/{{course.thumbnail}}" alt="">
+        </div>
+        <p class="courseDescription me-5">
+            {{course.description}}
+        </p>
+
+    </div>
+    <hr class="headingUnderline">
+    {% if userCourse.mode == "liveO2O" %}
+    <h4>Join Class</h4>
+    {% for topic in course.all_topics %}
+    <div class="my-5">
+        {% if topic.class_link %}
+        <p><strong>{{topic.title}}:</strong>
+            <a href="{{topic.class_link}}" class="classLink py-2 px-3 rounded mx-5">Join Class</a>
+        </p>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if userCourse.mode == "selfPaced" %}
+    <div class="d-lg-flex justify-content-between">
+        <div class="lectureVideo">
+            <video controls class="tutorialVideos">
+                <source src="/media/{{course.all_topics.0.lecture_video}}" type="video/mp4">
+            </video>
+        </div>
+        <div class="allTopics p-3 text-center">
+            <h5>Topics</h5>
+            <hr>
+            {% for topic in course.all_topics %}
+            <p class="p-2 rounded topicBtn" targetVideo="/media/{{topic.lecture_video}}">{{topic.title}}</p>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if userCourse.mode == "offline" %}
+    {% endif %}
+
+
+</section>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'eduPlatform/js/startCourse.js' %}"></script>
+{% endblock %}

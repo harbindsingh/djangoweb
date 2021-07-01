@@ -1,0 +1,94 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/register.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<section class="p-4 registerSection">
+    <h1>Register For {{course.title}}</h1>
+    <hr class="headingUndelineStyle2">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% if not request.user.is_authenticated%}
+        {% for error in userForm.errors %}
+        <p class="bg-danger text-white">{{error}}</p>
+        {% endfor %}
+        {% for error in userFullCourseRegistrationForm.errors %}
+        <p class="bg-danger text-white">{{error}}</p>
+        {% endfor %}
+        {% for error in userMiniCourseRegistrationForm.errors %}
+        <p class="bg-danger text-white">{{error}}</p>
+        {% endfor %}
+
+        <div class="row my-3">
+            <label for="firstname" class="col-lg-2 text-lg-end">{{userForm.first_name.label}}*</label>
+            <span class="col-3">{{userForm.first_name}}</span>
+            <label for="lastname" class="col-lg-2 text-lg-end">{{userForm.last_name.label}}*</label>
+            <span class="col-3">{{userForm.last_name}}</span>
+        </div>
+
+
+        <div class="row my-3">
+
+            <label for="username" class="col-lg-2 text-lg-end">{{userForm.username.label}}*</label>
+            <span class="col-3">{{userForm.username}} <p><small>*Username must be your email id</small></p></span>
+
+
+            {% if fullCourseFlag %}
+            <label for="phoneno" class="col-lg-2 text-lg-end">{{userFullCourseRegistrationForm.phone_no.label}}*</label>
+            <span class="col-3">{{userFullCourseRegistrationForm.phone_no}}</span>
+            {% else %}
+            <label for="phoneno" class="col-lg-2 text-lg-end">{{userMiniCourseRegistrationForm.phone_no.label}}*</label>
+            <span class="col-3">{{userMiniCourseRegistrationForm.phone_no}}</span>
+            {% endif %}
+
+        </div>
+
+        <div class="row my-3">
+            <label for="password1" class="col-lg-2 text-lg-end">{{userForm.password1.label}}*</label>
+            <span class="col-3">{{userForm.password1}}</span>
+            <label for="password2" class="col-lg-2 text-lg-end">{{userForm.password2.label}}*</label>
+            <span class="col-3">{{userForm.password2}}</span>
+        </div>
+        <div class="row my-3">
+            <small class="mx-lg-5">{{userForm.password1.help_text}}</small>
+        </div>
+        <div class="text-md-center">
+            <input type="submit" class="btn btn-outline-dark submitbtn">
+        </div>
+        {%else%}
+        <div class="my-3 text-center">
+            {% if fullCourseFlag %}
+            <label for="phoneno">{{userFullCourseRegistrationForm.phone_no.label}}*</label>
+            <span class="">{{userFullCourseRegistrationForm.phone_no}}</span>
+            {% else %}
+            <label for="phoneno">{{userMiniCourseRegistrationForm.phone_no.label}}*</label>
+            <span class="">{{userMiniCourseRegistrationForm.phone_no}}</span>
+            {% endif %}
+        </div>
+        <div class="text-md-center">
+            <input type="submit" class="btn btn-outline-dark submitbtn">
+        </div>
+        {%endif%}
+
+    </form>
+    <div class="text-center">
+        <small>Already a <strong>Registered User?</strong> <a href="{% url 'login' %}">LOGIN</a></small>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>
+{% endblock %}

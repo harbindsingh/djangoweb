@@ -1,0 +1,17 @@
+.loginbtn {
+  font-size: 1.2em;
+  color: #343434;
+  width: 20%;
+  background-color: transparent;
+  border: 2px solid #e6b31e;
+  border-radius: 2em;
+}
+.loginbtn:hover {
+  color: #fcfaf1;
+  background-color: #e6b31e;
+}
+.msgdiv {
+  color: #fcfaf1;
+  background-color: rgba(255, 99, 71, 1);
+  border-radius: 0.2em;
+}

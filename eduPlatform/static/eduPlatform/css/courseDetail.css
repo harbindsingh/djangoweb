@@ -1,0 +1,133 @@
+.courseFeaturesDiv {
+  max-width: 40%;
+
+  height: 100%;
+  background-color: #e6b31e;
+}
+.courseFeaturesDiv button {
+  width: 95%;
+}
+
+.nextBatchdate {
+  background-color: #e6b31e;
+  width: fit-content;
+}
+.courseDescriptionDiv {
+  max-width: 60%;
+}
+.courseDescriptionDiv .EnrollNowBtn,
+.courseDescriptionDiv .StartLearningBtn {
+  width: 40%;
+}
+.coursepreviewVideo {
+  width: 100%;
+}
+
+.menuLinks {
+  background-color: #cacaca;
+  color: #343434;
+}
+.activeMenu {
+  font-weight: bolder;
+  background-color: #fcfaf1;
+}
+.featureDiv {
+  width: 100%;
+  background-color: #e6b31e;
+}
+.featureList {
+  list-style: none;
+}
+.featureList li {
+  border-bottom: 1px solid #343434;
+}
+.featureList li:nth-last-child(1) {
+  border-bottom: none;
+}
+.certificateDivFeature {
+  width: 30%;
+}
+.certificateDivFeature img {
+  width: 90%;
+}
+.content-div {
+  width: 70%;
+}
+.reviewContainerDiv {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+.rating_div_container {
+  width: 40%;
+  background-color: #cacaca;
+}
+.ratings {
+  width: fit-content;
+  position: relative;
+  transform: rotateY(180deg);
+}
+.ratings input {
+  display: none;
+}
+.ratings label {
+  display: block;
+  cursor: pointer;
+  font-size: 3em;
+}
+.ratings label:before {
+  content: "\2605";
+  position: relative;
+  display: block;
+  opacity: 1;
+}
+.ratings label:after {
+  content: "\2605";
+  position: absolute;
+  display: block;
+  color: #e6b31e;
+  top: 0;
+  opacity: 0;
+}
+.ratings label:hover:after,
+label:hover ~ label:after,
+.ratings input:checked ~ label:after {
+  opacity: 1;
+}
+.givenRating {
+  color: #e6b31e;
+  font-size: 3em;
+}
+.getsyllabusBtn {
+  width: 30%;
+}
+@media screen and (max-width: 768px) {
+  .courseFeaturesDiv {
+    max-width: 100%;
+  }
+  .courseDescriptionDiv {
+    max-width: 100%;
+  }
+  .coursePreview {
+    width: 100%;
+    height: 25em;
+  }
+  .modeSelectiondiv {
+    width: 100%;
+  }
+  .startlearn {
+    width: 100%;
+  }
+  .getsyllabusBtn {
+    width: 50%;
+  }
+  .content-div {
+    width: 100%;
+  }
+  .certificateDivFeature {
+    width: 100%;
+  }
+  .rating_div_container {
+    width: 100%;
+  }
+}

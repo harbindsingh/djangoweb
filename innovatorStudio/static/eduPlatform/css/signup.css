@@ -1,0 +1,11 @@
+@media screen and (width: 768px) {
+  .signupForm {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .headingUndelineStyle2 {
+    width: 20%;
+  }
+}

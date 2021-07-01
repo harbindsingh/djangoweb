@@ -1,0 +1,132 @@
+.courseCardSlider {
+  overflow-x: hidden;
+  width: 85%;
+}
+.coursecardlist-container {
+  list-style: none;
+  min-width: 18em;
+}
+.coursecardlist-container .card {
+  height: 100%;
+}
+.coursecardlist-container .card:hover {
+  box-shadow: 0em 0em 0.5em 0em #343434;
+}
+.imgCourses {
+  overflow: hidden;
+  text-decoration: none;
+  color: #343434;
+}
+.imgCourses p,
+.imgCourses h5,
+.imgCourses small {
+  color: #343434;
+}
+.imgCourses:hover,
+.imgCourses p,
+.imgCourses h5,
+.imgCourses small {
+  color: #343434;
+}
+.coursecardlist-container .card:hover img {
+  transform: scale(1.1);
+}
+.sliderNextBtn,
+.sliderPrevBtn {
+  position: relative;
+  top: -15em;
+}
+.sliderNextBtn {
+  right: -92.5%;
+}
+.sliderPrevBtn {
+  left: 3%;
+}
+.bi.bi-arrow-right-circle-fill,
+.bi.bi-arrow-left-circle-fill,
+.bi.bi-star-fill {
+  font-size: 1.8em;
+}
+.ratings {
+  font-size: 0.5em;
+}
+.StartLearningBtn,
+.EnrollNowBtn {
+  text-decoration: none;
+  width: 100%;
+  border: 1px solid #343434;
+  color: #343434;
+}
+.StartLearningBtn:hover,
+.EnrollNowBtn:hover {
+  background-color: #343434;
+  color: #fff;
+}
+
+.goldencolorClass {
+  background: #e6b31e; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #e6b31e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #e6b31e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.goldencolorClassbtn {
+  color: #e6b31e;
+}
+
+.fullcourseclasslist {
+  min-width: 24em;
+}
+
+.fullcourseclass,
+.minicourseclass {
+  background: #cacaca; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #cacaca
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #fcfaf1,
+    #fcfaf1,
+    #cacaca
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+@media screen and (max-width: 1024px) {
+  .sliderPrevBtn {
+    left: 0%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .coursecardlist-container {
+    min-width: 20.5em;
+  }
+  .sliderNextBtn {
+    right: -93%;
+  }
+  .sliderPrevBtn {
+    left: -2%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .coursecardlist-container {
+    min-width: 20.5em;
+  }
+  .sliderNextBtn {
+    right: -92%;
+  }
+  .sliderPrevBtn {
+    left: -8%;
+  }
+}

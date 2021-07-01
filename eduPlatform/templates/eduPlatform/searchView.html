@@ -1,0 +1,94 @@
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/searchView.css' %}">
+
+{% endblock %}
+
+{% block body %}
+
+<section class="container my-5">
+    <div class="d-flex my-3">
+        <p class="mx-1">You searched for: </p>
+        <h4 class="mx-1">{{title}}</h4>
+    </div>
+    <div class="d-flex flex-wrap">
+        {% if result_courses %}
+        {% for course in result_courses %}
+        <div class="card m-2">
+            <a href="{% url 'courseDetails' course.id course.title %}" class="imgCourses mx-auto">
+                <img src="/media/{{course.thumbnail}}" class="card-img-top" alt="{{course.title}}_image">
+            </a>
+            <div class="card-body pt-0">
+                <div class="ratings d-flex">
+                    {% if course.avgRating >= 1.0 %}
+                    <i class="bi bi-star-fill checked"></i>
+                    {% else %}
+                    <i class="bi bi-star-fill"></i>
+                    {% endif %}
+                    {% if course.avgRating >= 2.0 %}
+                    <i class="bi bi-star-fill checked"></i>
+                    {% else %}
+                    <i class="bi bi-star-fill"></i>
+                    {% endif %}
+                    {% if course.avgRating >= 3.0 %}
+                    <i class="bi bi-star-fill checked"></i>
+                    {% else %}
+                    <i class="bi bi-star-fill"></i>
+                    {% endif %}{% if course.avgRating >= 4.0 %}
+                    <i class="bi bi-star-fill checked"></i>
+                    {% else %}
+                    <i class="bi bi-star-fill"></i>
+                    {% endif %}{% if course.avgRating >= 5.0 %}
+                    <i class="bi bi-star-fill checked"></i>
+                    {% else %}
+                    <i class="bi bi-star-fill"></i>
+                    {% endif %}
+                </div>
+
+                <h5 class="card-title my-0">{{course.title|slice:":50"}}</h5>
+                <small class="m-0">Duration Of course: {{course.get_duration}} hrs</small>
+                <p class="card-text mb-1">{{course.description|slice:":125"}}...</p>
+                {% if colorclass == 'fullcourseclass' %}
+                <p class="m-0"><strong>Courses Covered</strong></p>
+                <ul class="d-flex flex-wrap p-0 mb-3">
+                    {% for topic in course.all_topics %}
+                    <li class="mx-3">{{topic.mini_course.title}}</li>
+                    {%endfor%}
+                </ul>
+                {% endif %}
+                <h5>
+                    <small> Rs. </small>
+                    {{course.fee}}/-
+                    <small style="text-decoration: line-through;">{{course.fee|add:course.fee}}/- </small>
+                </h5>
+                <div class="d-flex">
+                    {% if user.is_authenticated %}
+                    {% if course in userCourses %}
+                    <a href="{% url 'courseDetails' course.id course.title %}"
+                        class="StartLearningBtn px-2 py-1 rounded text-center">Start
+                        Learning
+                    </a>
+                    {% else %}
+                    <a href="{% url 'courseDetails' course.id course.title %}"
+                        class="EnrollNowBtn px-2 py-1 rounded text-center">Enroll
+                    </a>
+                    {% endif %}
+                    {% else %}
+                    <a href="{% url 'courseDetails' course.id course.title %}"
+                        class="EnrollNowBtn px-2 py-1 rounded text-center">Enroll
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No result found for your search</p>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}
