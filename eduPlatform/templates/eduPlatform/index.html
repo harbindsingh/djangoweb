@@ -1,5 +1,3 @@
-{% extends 'eduPlatform/base.html' %}
-
 {% load static %}
 
 {% block links %}
@@ -39,7 +37,7 @@
 <div id="searchCourses" class="d-none d-md-block">
     <form action="" method="POST" class="input-group">
         {% csrf_token %}
-        <input type="text" class="searchInput shadow p-2" placeholder="Search Courses" aria-label="Serach Courses"
+        <input type="text" class="searchInput shadow p-2" placeholder="Search Courses" aria-label="Search Courses"
             aria-describedby="searchbtn" name="search-query">
         <button class="btn btn-dark" type="submit" id="searchbtn"><i class="bi bi-search"></i></button>
     </form>
