@@ -129,9 +129,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_DIR = [
-    os.path.join(BASE_DIR, 'eduPltform/static'),
+    os.path.join(BASE_DIR, 'eduPlatform/static'),
     ]
-#STATIC_ROOT=os.path.join(BASE_DIR, 'eduPltform/static')
+#STATIC_ROOT=os.path.join(BASE_DIR, 'eduPlatform/static')
 
 
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
@@ -144,4 +144,4 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'eduPltform/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'eduPlatform/static')
