@@ -26,7 +26,7 @@ SECRET_KEY = '=kd@z5p91omc(pbuqwx187^29)7dey=-lr78%vokwxz@hoiyn7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['djangoweb-3-ni4ht.ondigitalocean.app','innovatorsstudio.online','www.innovatorsstudio.online','innovatorsstudio.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
