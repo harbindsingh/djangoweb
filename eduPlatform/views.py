@@ -697,7 +697,7 @@ def eventListView(request):
     }
     return render(request, 'eduPlatform/Events.html', context)
 def policy(request):
-    return render(request, 'eduPlatform/Privacy.html', context)
+    return render(request, 'eduPlatform/Privacy.html')
 
 def terms(request):
-    return render(request, 'eduPlatform/terms.html', context)
+    return render(request, 'eduPlatform/terms.html')
