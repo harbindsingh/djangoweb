@@ -696,3 +696,8 @@ def eventListView(request):
         'demoform':freeDemoForm,
     }
     return render(request, 'eduPlatform/Events.html', context)
+def policy(request):
+    return render(request, 'eduPlatform/Privacy.html', context)
+
+def terms(request):
+    return render(request, 'eduPlatform/terms.html', context)
