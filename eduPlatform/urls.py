@@ -22,6 +22,10 @@ urlpatterns = [
     path('liveSessions/', views.liveSessionView, name="livesessions"),
     path('freedemo/', views.freeDemoSignUp, name='freedemo'),
     path('events/', views.eventListView, name='events'),
+    path('policy/', views.policy , name='policy'),
+    path('disclaimer/', views.disclaimer , name='disclaimer'),
+    path('refund/', views.refund , name='refund'),
+    path('terms/', views.terms , name='terms'),
 
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='eduPlatform/passwordReset.html'), 
     name='password_reset'),
