@@ -145,3 +145,5 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'eduPlatform/static')
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
