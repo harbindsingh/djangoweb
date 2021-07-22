@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '=kd@z5p91omc(pbuqwx187^29)7dey=-lr78%vokwxz@hoiyn7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['innovatorsstudio-2pwt9.ondigitalocean.app','innovatorsstudio.online','www.innovatorsstudio.online']
 
