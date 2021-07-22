@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
-<body>
-	<div class="container-fluid">
+{% extends 'eduPlatform/base.html' %}
+
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'eduPlatform/css/aboutUs.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
 		<img src="{% static 'eduPlatform/images/1.jpg' %}">
 		<h1 class="text-center my-3">Terms & Conditions</h1>
 		<p class="font-weight-bold">1.Enter into an agreement</p>
@@ -65,6 +63,4 @@
         <p>This Agreement, along with the Refund Policy, Privacy Policy, Rescheduling Policy, Terms of Use, and any additional guidelines, rules, and/or disclaimers posted on the Website constitutes the entire agreement governing Your accessing our website any prior agreements, if any, relating to any matter dealt within this Agreement.</p>
  	</div>
 
-
-</body>
-</html>
+     {% endblock %}
